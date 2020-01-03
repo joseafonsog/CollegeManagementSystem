@@ -1,0 +1,32 @@
+﻿<h2>Courses</h2>
+<a href="#/courses/new" class="btn btn-primary">Create Course</a>
+<hr/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Courses List
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in courses">
+                    <td>{{c.Name}}</td>
+                    <td>
+                        <a href="#/courses/{{c.Id}}">Edit</a>
+                        <a href="" ng-click="deleteCourse(c.Id)">Delete</a>
+                    </td>
+                </tr>
+                <tr ng-if="!courses || courses.length == 0">
+                    <td colspan="2" style="text-align:center;">
+                        No courses data to display
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

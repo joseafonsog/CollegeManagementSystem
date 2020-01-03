@@ -1,0 +1,39 @@
+﻿<h2 ng-if="!id || id == 'new'">Create</h2>
+<h2 ng-if="id && id != 'new'">Edit</h2>
+
+<form class="form-horizontal" ng-submit="submit(subject)">
+    <h4 ng-if="!id || id == 'new'">Create a new subject</h4>
+    <h4 ng-if="id && id != 'new'">Edit subject</h4>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Name</label>
+        <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="subject.Name" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Course</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="subject.CourseId">
+                <option ng-repeat="c in courses" value="{{c.Id}}">{{c.Name}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Teacher</label>
+        <div class="col-lg-10">
+            <select class="form-control" ng-model="subject.TeacherId">
+                <option ng-repeat="t in teachers" value="{{t.Id}}">{{t.Name}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <input type="submit" class="btn btn-success" value="Submit" />
+            <a href="#/courses" class="btn btn-default">Cancel</a>
+        </div>
+    </div>
+</form>

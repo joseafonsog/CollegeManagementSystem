@@ -1,0 +1,35 @@
+﻿<h2>Teachers</h2>
+<a href="#/teachers/new" class="btn btn-primary">Create Teacher</a>
+<hr/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Teachers List
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Birthday</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="t in teachers">
+                    <td>{{t.Name}}</td>
+                    <td>{{t.Birthday | date : "mediumDate"}}</td>
+                    <td>{{t.Salary}}</td>
+                    <td>
+                        <a href="#/teachers/{{t.Id}}">Edit</a>
+                        <a href="" ng-click="deleteTeacher(t.Id)">Delete</a>
+                    </td>
+                </tr>
+                <tr ng-if="!teachers || teachers.length == 0">
+                    <td colspan="2" style="text-align:center;">
+                        No teachers data to display
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

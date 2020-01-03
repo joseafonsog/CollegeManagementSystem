@@ -1,0 +1,32 @@
+﻿<h2>Subjects</h2>
+<a href="#/subjects/new" class="btn btn-primary">Create Subject</a>
+<hr/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Subjects List
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="s in subjects">
+                    <td>{{s.Name}}</td>
+                    <td>
+                        <a href="#/subjects/{{s.Id}}">Edit</a>
+                        <a href="" ng-click="deleteSubject(s.Id)">Delete</a>
+                    </td>
+                </tr>
+                <tr ng-if="!subjects || subjects.length == 0">
+                    <td colspan="2" style="text-align:center;">
+                        No subjects data to display
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

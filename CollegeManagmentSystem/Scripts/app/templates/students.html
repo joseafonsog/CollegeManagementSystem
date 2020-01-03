@@ -1,0 +1,34 @@
+﻿<h2>Students</h2>
+<a href="#/students/new" class="btn btn-primary">Create Student</a>
+<hr/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Students List
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Birthday</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="s in students">
+                    <td>{{s.Name}}</td>
+                    <td>{{s.Birthday | date : "dd/MM/y}}</td>
+                    <td>
+                        <a href="#/students/{{s.Id}}">Edit</a>
+                        <a href="" ng-click="deleteStudent(s.Id)">Delete</a>
+                    </td>
+                </tr>
+                <tr ng-if="!students || students.length == 0">
+                    <td colspan="2" style="text-align:center;">
+                        No students data to display
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
