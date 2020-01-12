@@ -6,24 +6,35 @@
         Courses List
     </div>
     <div class="panel-body">
+
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Teachers</th>
+                    <th>Students</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="c in courses">
                     <td>{{c.Name}}</td>
+                    <td>{{c.Teachers}}</td>
+                    <td>{{c.Students}}</td>
                     <td>
+                        <a href="#/courses/details/{{c.Id}}">Details</a>
                         <a href="#/courses/{{c.Id}}">Edit</a>
                         <a href="" ng-click="deleteCourse(c.Id)">Delete</a>
                     </td>
                 </tr>
-                <tr ng-if="!courses || courses.length == 0">
-                    <td colspan="2" style="text-align:center;">
+                <tr ng-if="(!courses || courses.length == 0) && loading == false">
+                    <td colspan="4" style="text-align:center;">
                         No courses data to display
+                    </td>
+                </tr>
+                <tr ng-if="loading == true">
+                    <td colspan="4" style="text-align:center;">
+                        Loading...
                     </td>
                 </tr>
             </tbody>

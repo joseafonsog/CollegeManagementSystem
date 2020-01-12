@@ -76,6 +76,15 @@
   <ItemGroup>
     <Compile Include="Data\CollegeContext.cs" />
     <Compile Include="Data\ICollegeContext.cs" />
+    <Compile Include="Dtos\SubjectDetailsDto.cs" />
+    <Compile Include="Dtos\StudentDetailsDto.cs" />
+    <Compile Include="Dtos\CourseDetailsDto.cs" />
+    <Compile Include="Dtos\SubjectDetailsSubjectsDto.cs" />
+    <Compile Include="Dtos\StudentDetailsSubjectsDto.cs" />
+    <Compile Include="Dtos\TeacherDetailsDto.cs" />
+    <Compile Include="Dtos\TeacherDetailsSubjectsDto.cs" />
+    <Compile Include="Dtos\CourseDetailsSubjectsDto.cs" />
+    <Compile Include="Dtos\CourseDto.cs" />
     <Compile Include="Dtos\CreateCourseRequestDto.cs" />
     <Compile Include="Dtos\CreateStudentRequestDto.cs" />
     <Compile Include="Dtos\CreateSubjectRequestDto.cs" />

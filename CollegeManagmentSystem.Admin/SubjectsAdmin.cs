@@ -1,6 +1,9 @@
 ﻿using CollegeManagementSystem.Core;
 using CollegeManagementSystem.Infrastructure.Dtos;
 using CollegeManagmentSystem.Infrastructure.Data;
+using CollegeManagmentSystem.Infrastructure.Dtos;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace CollegeManagmentSystem.Admin
@@ -34,6 +37,11 @@ namespace CollegeManagmentSystem.Admin
             _db.SaveChanges();
         }
 
+        public IList<Subject> GetSubjectByCourse(int courseId)
+        {
+            return _db.Subjects.Where(s => s.CourseId == courseId).ToList();
+        }
+
         public void SaveOrUpdate(CreateSubjectRequestDto dto) => SaveOrUpdate(dto, null);
         public void SaveOrUpdate(CreateSubjectRequestDto dto, int? id)
         {
@@ -57,6 +65,36 @@ namespace CollegeManagmentSystem.Admin
                 subject.TeacherId = dto.TeacherId;
                 Update(subject);
             }
+        }
+
+        public SubjectDetailsDto GetSubjectDetail(int id)
+        {
+            var studentSubjects = _db.StudentSubjects
+                .Where(c => c.SubjectId == id)
+                .Include(s => s.Subject)
+                .Include(s => s.Student)
+                .Include("Subject.Teacher")
+                .ToList();
+            var students = new List<SubjectDetailsSubjectsDto>();
+            foreach (var item in studentSubjects)
+            {
+                students.Add(new SubjectDetailsSubjectsDto
+                {
+                    Student = item.Student,
+                    AvgGrade = studentSubjects.Where(x => x.StudentId == item.StudentId).Average(ss => ss.Grade) ?? 0
+                });
+            }
+
+            var subject = studentSubjects.FirstOrDefault().Subject ?? _db.Subjects.FirstOrDefault(s => s.Id == id) ?? new Subject();
+            var result = new SubjectDetailsDto
+            {
+                Id = subject.Id,
+                Name = subject.Name,
+                Teacher = subject.Teacher,
+                Students = students
+            };
+
+            return result;
         }
     }
 }

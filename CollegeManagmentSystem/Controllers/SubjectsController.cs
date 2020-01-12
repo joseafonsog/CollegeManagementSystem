@@ -15,7 +15,7 @@ namespace CollegeManagmentSystem.Controllers
         {
             _subjectsAdmin = subjectsAdmin;
         }
-        public object Index()
+        public object GetAll()
         {
             var subjects = _subjectsAdmin.GetAll();
             var result = JsonConvert.SerializeObject(subjects, Formatting.Indented,
@@ -26,9 +26,30 @@ namespace CollegeManagmentSystem.Controllers
             return result;
         }
 
-        public object Details(int id)
+        public object GetById(int id)
         {
             var subjects = _subjectsAdmin.Get(id);
+            var result = JsonConvert.SerializeObject(subjects, Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+            return result;
+        }
+
+        public object GetByCourse(int id)
+        {
+            var subjects = _subjectsAdmin.GetSubjectByCourse(id);
+            var result = JsonConvert.SerializeObject(subjects, Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+            return result;
+        }
+        public object Details(int id)
+        {
+            var subjects = _subjectsAdmin.GetSubjectDetail(id);
             var result = JsonConvert.SerializeObject(subjects, Formatting.Indented,
                             new JsonSerializerSettings
                             {

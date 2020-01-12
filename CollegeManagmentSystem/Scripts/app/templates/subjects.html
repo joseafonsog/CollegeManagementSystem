@@ -17,13 +17,19 @@
                 <tr ng-repeat="s in subjects">
                     <td>{{s.Name}}</td>
                     <td>
+                        <a href="#/subjects/details/{{s.Id}}">Details</a>
                         <a href="#/subjects/{{s.Id}}">Edit</a>
                         <a href="" ng-click="deleteSubject(s.Id)">Delete</a>
                     </td>
                 </tr>
-                <tr ng-if="!subjects || subjects.length == 0">
+                <tr ng-if="(!subjects || subjects.length == 0) && loading == false">
                     <td colspan="2" style="text-align:center;">
                         No subjects data to display
+                    </td>
+                </tr>
+                <tr ng-if="loading == true">
+                    <td colspan="2" style="text-align:center;">
+                        Loading...
                     </td>
                 </tr>
             </tbody>

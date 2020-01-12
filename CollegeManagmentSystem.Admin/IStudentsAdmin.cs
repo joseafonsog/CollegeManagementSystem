@@ -1,5 +1,6 @@
 ﻿using CollegeManagementSystem.Core;
 using CollegeManagementSystem.Infrastructure.Dtos;
+using CollegeManagmentSystem.Infrastructure.Dtos;
 
 namespace CollegeManagmentSystem.Admin
 {
@@ -7,5 +8,6 @@ namespace CollegeManagmentSystem.Admin
     {
         void SaveOrUpdate(CreateStudentRequestDto dto);
         void SaveOrUpdate(CreateStudentRequestDto dto, int? id);
+        StudentDetailsDto GetStudentDetail(int id);
     }
 }

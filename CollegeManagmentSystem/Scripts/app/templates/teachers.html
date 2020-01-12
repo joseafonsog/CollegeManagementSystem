@@ -11,6 +11,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Birthday</th>
+                    <th>Salary</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -20,13 +21,19 @@
                     <td>{{t.Birthday | date : "mediumDate"}}</td>
                     <td>{{t.Salary}}</td>
                     <td>
+                        <a href="#/teachers/details/{{t.Id}}">Details</a>
                         <a href="#/teachers/{{t.Id}}">Edit</a>
                         <a href="" ng-click="deleteTeacher(t.Id)">Delete</a>
                     </td>
                 </tr>
-                <tr ng-if="!teachers || teachers.length == 0">
-                    <td colspan="2" style="text-align:center;">
+                <tr ng-if="(!teachers || teachers.length == 0) && loading == false">
+                    <td colspan="3" style="text-align:center;">
                         No teachers data to display
+                    </td>
+                </tr>
+                <tr ng-if="loading == true">
+                    <td colspan="3" style="text-align:center;">
+                        Loading...
                     </td>
                 </tr>
             </tbody>

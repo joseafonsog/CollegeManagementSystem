@@ -1,5 +1,6 @@
 ﻿using CollegeManagementSystem.Core;
 using CollegeManagementSystem.Infrastructure.Dtos;
+using CollegeManagmentSystem.Infrastructure.Dtos;
 using System.Collections.Generic;
 
 namespace CollegeManagmentSystem.Admin
@@ -9,5 +10,6 @@ namespace CollegeManagmentSystem.Admin
         void SaveOrUpdate(CreateTeacherRequestDto dto);
         void SaveOrUpdate(CreateTeacherRequestDto dto, int? id);
         IList<Teacher> GetFreeTeachers();
+        TeacherDetailsDto GetTeacherDetail(int id);
     }
 }

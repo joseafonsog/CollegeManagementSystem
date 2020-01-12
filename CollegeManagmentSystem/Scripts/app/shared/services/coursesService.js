@@ -9,7 +9,19 @@
             service.getCourses = function () {
                 var deferred = $q.defer();
 
-                $http.get('/Courses/Index').then(function (result) {
+                $http.get('/Courses/GetAll').then(function (result) {
+                    deferred.resolve(result.data);
+                }, function () {
+                    deferred.reject();
+                });
+
+                return deferred.promise;
+            };
+
+            service.getCoursesWithExtraData = function () {
+                var deferred = $q.defer();
+
+                $http.get('/Courses/GetAllWithAdditionalData').then(function (result) {
                     deferred.resolve(result.data);
                 }, function () {
                     deferred.reject();
@@ -19,6 +31,18 @@
             };
 
             service.getCourseById = function (id) {
+                var deferred = $q.defer();
+
+                $http.get('/Courses/GetById/' + id).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function () {
+                    deferred.reject();
+                });
+
+                return deferred.promise;
+            };
+
+            service.getCourseDetails = function (id) {
                 var deferred = $q.defer();
 
                 $http.get('/Courses/Details/' + id).then(function (result) {

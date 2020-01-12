@@ -193,6 +193,10 @@
     <Content Include="Scripts\app\shared\services\teachersService.js" />
     <Content Include="Scripts\app\shared\services\studentsService.js" />
     <Content Include="Scripts\app\shared\services\coursesService.js" />
+    <Content Include="Scripts\app\templates\subjectDetails.html" />
+    <Content Include="Scripts\app\templates\studentDetails.html" />
+    <Content Include="Scripts\app\templates\teacherDetails.html" />
+    <Content Include="Scripts\app\templates\courseDetails.html" />
     <Content Include="Scripts\app\templates\subjectAdd.html" />
     <Content Include="Scripts\app\templates\teacherAdd.html" />
     <Content Include="Scripts\app\templates\studentAdd.html" />

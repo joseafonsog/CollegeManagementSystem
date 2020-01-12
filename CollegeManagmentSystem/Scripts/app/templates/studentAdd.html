@@ -19,10 +19,58 @@
         </div>
     </div>
 
+    <div class="form-inline">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Course</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="enrollForm.CourseId" ng-change="handleCourseSelection()">
+                    <option ng-repeat="c in courses" value="{{c.Id}}">{{c.Name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Subject</label>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="enrollForm.SubjectId">
+                    <option ng-repeat="t in subjects" value="{{t.Id}}">{{t.Name}}</option>
+                </select>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="enroll(courses, subjects, enrollForm.CourseId, enrollForm.SubjectId)">Enroll</button>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Subject</th>
+                <th>Teacher</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="s in subjectsEnrolled">
+                <td>{{s.course.Name}}</td>
+                <td>{{s.subject.Name}}</td>
+                <td>{{s.subject.Teacher.Name}}</td>
+                <td>
+                    <a href="" ng-click="unenroll(s.subject.Id)">Unenroll</a>
+                </td>
+            </tr>
+            <tr ng-if="(!subjectsEnrolled || subjectsEnrolled.length == 0) && loading == false">
+                <td colspan="4" style="text-align:center;">
+                    No subjects enrolled!
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
             <input type="submit" class="btn btn-success" value="Submit" />
             <a href="#/courses" class="btn btn-default">Cancel</a>
         </div>
     </div>
+
 </form>

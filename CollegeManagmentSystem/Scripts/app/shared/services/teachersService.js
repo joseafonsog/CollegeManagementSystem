@@ -9,7 +9,7 @@
             service.getTeachers = function () {
                 var deferred = $q.defer();
 
-                $http.get('/Teachers/Index').then(function (result) {
+                $http.get('/Teachers/GetAll').then(function (result) {
                     deferred.resolve(result.data);
                 }, function () {
                     deferred.reject();
@@ -31,6 +31,18 @@
             };
 
             service.getTeacherById = function (id) {
+                var deferred = $q.defer();
+
+                $http.get('/Teachers/GetById/' + id).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function () {
+                    deferred.reject();
+                });
+
+                return deferred.promise;
+            };
+
+            service.getTeacherDetails = function (id) {
                 var deferred = $q.defer();
 
                 $http.get('/Teachers/Details/' + id).then(function (result) {

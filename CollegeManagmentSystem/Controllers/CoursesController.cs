@@ -12,7 +12,7 @@ namespace CollegeManagmentSystem.Controllers
         {
             _coursesAdmin = coursesAdmin;
         }
-        public object Index()
+        public object GetAll()
         {
             return JsonConvert.SerializeObject(_coursesAdmin.GetAll(), Formatting.Indented,
                             new JsonSerializerSettings
@@ -21,9 +21,27 @@ namespace CollegeManagmentSystem.Controllers
                             });
         }
 
-        public object Details(int id)
+        public object GetById(int id)
         {
             return JsonConvert.SerializeObject(_coursesAdmin.Get(id), Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+        }
+
+        public object GetAllWithAdditionalData()
+        {
+            return JsonConvert.SerializeObject(_coursesAdmin.GetAllWithAdditionalData(), Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+        }
+
+        public object Details(int id)
+        {
+            return JsonConvert.SerializeObject(_coursesAdmin.GetCourseDetail(id), Formatting.Indented,
                             new JsonSerializerSettings
                             {
                                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore

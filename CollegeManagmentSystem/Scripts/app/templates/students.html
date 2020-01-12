@@ -17,15 +17,21 @@
             <tbody>
                 <tr ng-repeat="s in students">
                     <td>{{s.Name}}</td>
-                    <td>{{s.Birthday | date : "dd/MM/y}}</td>
+                    <td>{{s.Birthday | date : "mediumDate"}}</td>
                     <td>
+                        <a href="#/students/details/{{s.Id}}">Details</a>
                         <a href="#/students/{{s.Id}}">Edit</a>
                         <a href="" ng-click="deleteStudent(s.Id)">Delete</a>
                     </td>
                 </tr>
-                <tr ng-if="!students || students.length == 0">
-                    <td colspan="2" style="text-align:center;">
+                <tr ng-if="(!students || students.length == 0) && loading == false">
+                    <td colspan="3" style="text-align:center;">
                         No students data to display
+                    </td>
+                </tr>
+                <tr ng-if="loading == true">
+                    <td colspan="3" style="text-align:center;">
+                        Loading...
                     </td>
                 </tr>
             </tbody>

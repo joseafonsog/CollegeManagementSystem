@@ -9,7 +9,7 @@
             service.getStudents = function () {
                 var deferred = $q.defer();
 
-                $http.get('/Students/Index').then(function (result) {
+                $http.get('/Students/GetAll').then(function (result) {
                     deferred.resolve(result.data);
                 }, function () {
                     deferred.reject();
@@ -19,6 +19,18 @@
             };
 
             service.getStudentById = function (id) {
+                var deferred = $q.defer();
+
+                $http.get('/Students/GetById/' + id).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function () {
+                    deferred.reject();
+                });
+
+                return deferred.promise;
+            };
+
+            service.getStudentDetails = function (id) {
                 var deferred = $q.defer();
 
                 $http.get('/Students/Details/' + id).then(function (result) {

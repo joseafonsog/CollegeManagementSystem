@@ -18,6 +18,10 @@
                     controller: 'courseAddCtrl',
                     templateUrl: '/Scripts/app/templates/courseAdd.html'
                 })
+                .when('/courses/details/:id', {
+                    controller: 'courseDetailsCtrl',
+                    templateUrl: '/Scripts/app/templates/courseDetails.html'
+                })
                 .when('/students', {
                     controller: 'studentsCtrl',
                     templateUrl: '/Scripts/app/templates/students.html'
@@ -25,6 +29,10 @@
                 .when('/students/:id', {
                     controller: 'studentAddCtrl',
                     templateUrl: '/Scripts/app/templates/studentAdd.html'
+                })
+                .when('/students/details/:id', {
+                    controller: 'studentDetailsCtrl',
+                    templateUrl: '/Scripts/app/templates/studentDetails.html'
                 })
                 .when('/subjects', {
                     controller: 'subjectsCtrl',
@@ -34,6 +42,10 @@
                     controller: 'subjectAddCtrl',
                     templateUrl: '/Scripts/app/templates/subjectAdd.html'
                 })
+                .when('/subjects/details/:id', {
+                    controller: 'subjectDetailsCtrl',
+                    templateUrl: '/Scripts/app/templates/subjectDetails.html'
+                })
                 .when('/teachers', {
                     controller: 'teachersCtrl',
                     templateUrl: '/Scripts/app/templates/teachers.html'
@@ -42,6 +54,10 @@
                     controller: 'teacherAddCtrl',
                     templateUrl: '/Scripts/app/templates/teacherAdd.html'
                 })
-                .otherwise({ redirectTo: '/' });
+                .when('/teachers/details/:id', {
+                    controller: 'teacherDetailsCtrl',
+                    templateUrl: '/Scripts/app/templates/teacherDetails.html'
+                })
+                .otherwise({ redirectTo: '/courses' });
         }]);
 })();

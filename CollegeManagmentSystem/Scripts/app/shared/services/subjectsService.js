@@ -9,7 +9,7 @@
             service.getSubjects = function () {
                 var deferred = $q.defer();
 
-                $http.get('/Subjects/Index').then(function (result) {
+                $http.get('/Subjects/GetAll').then(function (result) {
                     deferred.resolve(result.data);
                 }, function () {
                     deferred.reject();
@@ -19,6 +19,30 @@
             };
 
             service.getSubjectById = function (id) {
+                var deferred = $q.defer();
+
+                $http.get('/Subjects/GetById/' + id).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function () {
+                    deferred.reject();
+                });
+
+                return deferred.promise;
+            };
+
+            service.getSubjectsByCourse = function (courseId) {
+                var deferred = $q.defer();
+
+                $http.get('/Subjects/GetByCourse/' + courseId).then(function (result) {
+                    deferred.resolve(result.data);
+                }, function () {
+                    deferred.reject();
+                });
+
+                return deferred.promise;
+            };
+
+            service.getSubjectDetails = function (id) {
                 var deferred = $q.defer();
 
                 $http.get('/Subjects/Details/' + id).then(function (result) {

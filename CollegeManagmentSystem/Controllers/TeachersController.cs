@@ -13,7 +13,7 @@ namespace CollegeManagmentSystem.Controllers
             _teachersAdmin = teachersAdmin;
         }
 
-        public object Index()
+        public object GetAll()
         {
             return JsonConvert.SerializeObject(_teachersAdmin.GetAll(), Formatting.Indented,
                             new JsonSerializerSettings
@@ -31,9 +31,17 @@ namespace CollegeManagmentSystem.Controllers
                             });
         }
 
-        public object Details(int id)
+        public object GetById(int id)
         {
             return JsonConvert.SerializeObject(_teachersAdmin.Get(id), Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+        }
+        public object Details(int id)
+        {
+            return JsonConvert.SerializeObject(_teachersAdmin.GetTeacherDetail(id), Formatting.Indented,
                             new JsonSerializerSettings
                             {
                                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore

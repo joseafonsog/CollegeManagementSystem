@@ -1,0 +1,37 @@
+﻿<h2>Student: {{student.Name}}</h2>
+<hr />
+<div style="margin-top: 40px;" class="panel panel-default">
+    <div class="panel-heading">
+        Subjects
+    </div>
+    <div class="panel-body">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Teacher</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in student.Subjects">
+                    <td>{{c.Subject.Name}}</td>
+                    <td>{{c.Subject.Teacher.Name}}</td>
+                    <td>{{c.Grade}}</td>
+                </tr>
+                <tr ng-if="(!student || !student.Subjects || student.Subjects.length == 0) && loading == false">
+                    <td colspan="2" style="text-align:center;">
+                        No course subjects data to display
+                    </td>
+                </tr>
+                <tr ng-if="loading == true">
+                    <td colspan="2" style="text-align:center;">
+                        Loading...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
